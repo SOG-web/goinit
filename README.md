@@ -91,7 +91,7 @@ chmod +x install.sh
 ./install.sh
 
 # Verify installation
-goinit-generator --version
+goinit --version
 ```
 
 #### From Pre-built Binaries
@@ -109,14 +109,14 @@ goinit-generator --version
    ```bash
    # Linux/macOS
    chmod +x goinit-*
-   sudo mv goinit-* /usr/local/bin/goinit-generator
+   sudo mv goinit-* /usr/local/bin/goinit
 
    # Windows: Move to a directory in your PATH
    ```
 
 4. **Verify installation:**
    ```bash
-   goinit-generator --version
+   goinit --version
    ```
 
 ### Method 2: Use Template Directly
@@ -153,17 +153,19 @@ docker build -t goinit-api .
 docker run -p 8080:8080 --env-file .env goinit-api
 ```
 
-### Method 3: Go Install (Development)
+### Method 3: Go Install (Recommended)
 
 ```bash
 # Install CLI generator directly
 go install github.com/SOG-web/goinit@latest
 
-# Use the template
-git clone https://github.com/SOG-web/goinit/goinit.git
-cd goinit/gin
-go mod tidy
+# Generate a new project
+goinit
+
+# Follow the interactive prompts to configure your project
 ```
+
+> 💡 **Note**: After installation, the CLI tool is available as `goinit` command.
 
 ### Verification
 
@@ -171,7 +173,7 @@ After installation, verify everything works:
 
 ```bash
 # Check CLI generator
-goinit-generator --help
+goinit --help
 
 # Test template (if using directly)
 cd gin
@@ -228,7 +230,7 @@ GRANT ALL PRIVILEGES ON DATABASE myapp TO myuser;
 
 ```bash
 # Generate a new project
-goinit-generator
+goinit
 
 # Follow the interactive prompts
 # Your project will be ready in minutes!
@@ -534,8 +536,6 @@ This project is licensed under the MIT License.
 - [GORM](https://gorm.io/) - ORM library
 - [JWT](https://github.com/golang-jwt/jwt) - JSON Web Tokens
 - [Swagger](https://swagger.io/) - API documentation
-- [Cobra](https://github.com/spf13/cobra) - CLI framework
-- [Viper](https://github.com/spf13/viper) - Configuration management
 - [Gorilla WebSocket](https://github.com/gorilla/websocket) - WebSocket implementation
 - [GoMail](https://github.com/go-gomail/gomail) - Email sending
 
