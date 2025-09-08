@@ -1,0 +1,32 @@
+package server
+
+import (
+	"fmt"
+
+	"github.com/gin-gonic/gin"
+
+	"sog.com/goinit/gin/api/protocol/http/router"
+	"sog.com/goinit/gin/config"
+)
+
+type Server struct {
+	cfg    config.Config
+	engine *gin.Engine
+}
+
+func New(cfg config.Config, deps router.Dependencies) *Server {
+	if cfg.RunMode != "" {
+		gin.SetMode(cfg.RunMode)
+	}
+	r := router.New(deps)
+	return &Server{cfg: cfg, engine: r}
+}
+
+func (s *Server) Run() error {
+	if s.cfg.RunMode != "debug" {
+		gin.SetMode(s.cfg.RunMode)
+	}
+
+	addr := fmt.Sprintf(":%s", s.cfg.Port)
+	return s.engine.Run(addr)
+}

@@ -1,0 +1,79 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.21"
+
+      - name: Cache Go modules
+        uses: actions/cache@v3
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Download dependencies
+        run: go mod download
+
+      - name: Build CLI Generator
+        run: |
+          cd cli-generator
+          mkdir -p ../bin
+
+      - name: Build for Linux (amd64)
+        run: |
+          cd cli-generator
+          GOOS=linux GOARCH=amd64 go build -o ../bin/goinit-linux-amd64 .
+
+      - name: Build for macOS (amd64)
+        run: |
+          cd cli-generator
+          GOOS=darwin GOARCH=amd64 go build -o ../bin/goinit-darwin-amd64 .
+
+      - name: Build for macOS (arm64)
+        run: |
+          cd cli-generator
+          GOOS=darwin GOARCH=arm64 go build -o ../bin/goinit-darwin-arm64 .
+
+      - name: Build for Windows (amd64)
+        run: |
+          cd cli-generator
+          GOOS=windows GOARCH=amd64 go build -o ../bin/goinit-windows-amd64.exe .
+
+      - name: Create release archives
+        run: |
+          mkdir -p release
+          cd bin
+          tar -czf ../release/goinit-linux-amd64.tar.gz goinit-linux-amd64
+          tar -czf ../release/goinit-darwin-amd64.tar.gz goinit-darwin-amd64
+          tar -czf ../release/goinit-darwin-arm64.tar.gz goinit-darwin-arm64
+          zip ../release/goinit-windows-amd64.zip goinit-windows-amd64.exe
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            release/goinit-linux-amd64.tar.gz
+            release/goinit-darwin-amd64.tar.gz
+            release/goinit-darwin-arm64.tar.gz
+            release/goinit-windows-amd64.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
