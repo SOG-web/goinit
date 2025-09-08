@@ -83,6 +83,12 @@ func main() {
 		return
 	}
 
+	// Generate Swagger documentation
+	if err := runMakeSwag(projectPath); err != nil {
+		fmt.Printf("❌ Error generating Swagger docs: %v\n", err)
+		return
+	}
+
 	fmt.Println("\n✅ Project generated successfully!")
 	fmt.Printf("📁 Project location: %s\n", projectPath)
 	fmt.Println("\n🚀 Next steps:")
@@ -578,5 +584,22 @@ func runGoModTidy(projectPath string) error {
 	}
 
 	fmt.Println("✅ Dependencies downloaded successfully")
+	return nil
+}
+
+// runMakeSwag runs make swag to generate Swagger documentation
+func runMakeSwag(projectPath string) error {
+	fmt.Println("📄 Generating Swagger documentation...")
+
+	// Run make swag
+	cmd := exec.Command("make", "swag")
+	cmd.Dir = projectPath
+
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return fmt.Errorf("failed to run make swag: %v\nOutput: %s", err, string(output))
+	}
+
+	fmt.Println("✅ Swagger documentation generated successfully")
 	return nil
 }
