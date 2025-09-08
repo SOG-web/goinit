@@ -15,7 +15,7 @@ import (
 //go:embed gin
 var templateFS embed.FS
 
-const version = "v0.2.4"
+const version = "v0.2.5"
 
 type ProjectConfig struct {
 	ProjectName    string
@@ -207,10 +207,10 @@ func copyEmbeddedFile(src, dst string) error {
 func shouldSkipEmbedded(path string, d fs.DirEntry) bool {
 	name := d.Name()
 	
-	// Skip hidden files and directories
-	if strings.HasPrefix(name, ".") {
-		return true
-	}
+	// // Skip hidden files and directories
+	// if strings.HasPrefix(name, ".") {
+	// 	return true
+	// }
 	
 	// Skip common directories that shouldn't be copied
 	skipDirs := []string{
