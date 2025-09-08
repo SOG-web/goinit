@@ -1,4 +1,4 @@
-module sog.com/goinit
+module github.com/SOG-web/goinit
 
 go 1.25.0
 
@@ -6,6 +6,8 @@ require (
 	github.com/lpernett/godotenv v0.0.0-20230527005122-0de1d4c5ef5e
 	github.com/redis/go-redis/v9 v9.13.0
 )
+
+replace github.com/SOG-web/goinit/cli-generator => ./cli-generator
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
