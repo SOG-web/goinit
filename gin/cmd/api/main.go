@@ -15,7 +15,7 @@
 // @securityDefinitions.apikey Session
 // @in              cookie
 // @name            hor_session
-package api
+package main
 
 import (
 	"log/slog"

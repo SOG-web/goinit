@@ -15,7 +15,7 @@ import (
 //go:embed all:gin
 var templateFS embed.FS
 
-const version = "v0.2.6"
+const version = "v0.2.7"
 
 type ProjectConfig struct {
 	ProjectName    string
