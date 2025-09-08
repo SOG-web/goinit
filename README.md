@@ -9,38 +9,45 @@ Once installed, here's how to get started quickly:projects from the template.
 ### ✅ Core Features
 
 - **Authentication & Authorization**
+
   - JWT-based authentication with refresh tokens
   - Session management with cookies
   - Password reset functionality
   - Role-based access control (admin/user)
 
 - **User Management**
+
   - User registration and login
   - Profile management
   - User roles and permissions
   - Admin user controls
 
 - **Real-time Communication**
+
   - Server-Sent Events (SSE) for notifications
   - WebSocket support for bidirectional communication
   - Real-time event streaming
 
 - **Database Support**
+
   - SQLite (default, file-based)
   - MySQL
   - PostgreSQL
   - GORM ORM with auto-migration
 
 - **Email Integration**
+
   - SMTP email sending
   - Local email logging for development
   - HTML email templates
 
 - **Storage Solutions**
+
   - Local file storage
   - S3-compatible storage (AWS S3, MinIO, etc.)
 
 - **API Documentation**
+
   - Swagger/OpenAPI 3.0 documentation
   - Auto-generated API docs
   - Interactive API testing
@@ -91,6 +98,7 @@ goinit-generator --version
 
 1. **Go to [Releases](https://github.com/SOG-web/goinit/releases)**
 2. **Download the appropriate binary** for your platform:
+
    - `goinit-linux-amd64` (Linux)
    - `goinit-darwin-amd64` (macOS Intel)
    - `goinit-darwin-arm64` (macOS Apple Silicon)
