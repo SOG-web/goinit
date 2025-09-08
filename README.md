@@ -157,7 +157,7 @@ docker run -p 8080:8080 --env-file .env goinit-api
 
 ```bash
 # Install CLI generator directly
-go install github.com/SOG-web/goinit/goinit/cli-generator@latest
+go install github.com/SOG-web/goinit@latest
 
 # Use the template
 git clone https://github.com/SOG-web/goinit/goinit.git
@@ -270,14 +270,11 @@ goinit/
 │   ├── api/                # HTTP handlers and routes
 │   ├── docs/               # API documentation
 │   └── docker/             # Docker configuration
-├── cli-generator/          # 🛠️  CLI Tool Source
-│   ├── main.go            # CLI entry point
-│   ├── .git/hooks/        # Git hooks for template sync
-│   └── gin/               # Copied template for CLI use
-├── .github/workflows/      # 🚀 GitHub Actions CI/CD
-├── go.mod                 # Go module for CLI generator
-├── install.sh             # Installation script
-└── README.md              # This file
+├── .github/workflows/      # � GitHub Actions CI/CD
+├── main.go                 # CLI generator entry point
+├── go.mod                  # Go module for CLI generator
+├── install.sh              # Installation script
+└── README.md               # This file
 ```
 
 ### Generated Project Structure

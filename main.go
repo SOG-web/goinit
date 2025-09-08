@@ -49,7 +49,7 @@ func main() {
 	fmt.Printf("📁 Creating project in: %s\n", projectPath)
 
 	// Copy template files
-	templatePath := "../gin" // Path to the template
+	templatePath := "gin" // Path to the template
 	if err := copyTemplate(templatePath, projectPath, config); err != nil {
 		fmt.Printf("❌ Error copying template: %v\n", err)
 		return

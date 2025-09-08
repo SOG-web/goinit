@@ -11,8 +11,6 @@ require (
 	golang.org/x/crypto v0.39.0
 )
 
-replace github.com/SOG-web/goinit/cli-generator => ./cli-generator
-
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/KyleBanks/depth v1.2.1 // indirect

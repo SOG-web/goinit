@@ -34,28 +34,23 @@ jobs:
 
       - name: Build CLI Generator
         run: |
-          cd cli-generator
-          mkdir -p ../bin
+          mkdir -p bin
 
       - name: Build for Linux (amd64)
         run: |
-          cd cli-generator
-          GOOS=linux GOARCH=amd64 go build -o ../bin/goinit-linux-amd64 .
+          GOOS=linux GOARCH=amd64 go build -o bin/goinit-linux-amd64 .
 
       - name: Build for macOS (amd64)
         run: |
-          cd cli-generator
-          GOOS=darwin GOARCH=amd64 go build -o ../bin/goinit-darwin-amd64 .
+          GOOS=darwin GOARCH=amd64 go build -o bin/goinit-darwin-amd64 .
 
       - name: Build for macOS (arm64)
         run: |
-          cd cli-generator
-          GOOS=darwin GOARCH=arm64 go build -o ../bin/goinit-darwin-arm64 .
+          GOOS=darwin GOARCH=arm64 go build -o bin/goinit-darwin-arm64 .
 
       - name: Build for Windows (amd64)
         run: |
-          cd cli-generator
-          GOOS=windows GOARCH=amd64 go build -o ../bin/goinit-windows-amd64.exe .
+          GOOS=windows GOARCH=amd64 go build -o bin/goinit-windows-amd64.exe .
 
       - name: Create release archives
         run: |
