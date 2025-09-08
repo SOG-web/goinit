@@ -2,15 +2,20 @@ package main
 
 import (
 	"bufio"
+	"embed"
 	"fmt"
 	"io"
+	"io/fs"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"strings"
 )
 
-const version = "v1.0.0"
+//go:embed gin
+var templateFS embed.FS
+
+const version = "v1.1.0"
 
 type ProjectConfig struct {
 	ProjectName    string
@@ -49,8 +54,7 @@ func main() {
 	fmt.Printf("📁 Creating project in: %s\n", projectPath)
 
 	// Copy template files
-	templatePath := "gin" // Path to the template
-	if err := copyTemplate(templatePath, projectPath, config); err != nil {
+	if err := copyEmbeddedTemplate(projectPath, config); err != nil {
 		fmt.Printf("❌ Error copying template: %v\n", err)
 		return
 	}
@@ -147,64 +151,38 @@ func getProjectConfig() ProjectConfig {
 	}
 }
 
-func copyTemplate(src, dst string, config ProjectConfig) error {
-	return filepath.Walk(src, func(path string, info os.FileInfo, err error) error {
+func copyEmbeddedTemplate(dst string, config ProjectConfig) error {
+	return fs.WalkDir(templateFS, "gin", func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
 
 		// Skip certain directories and files
-		if shouldSkip(path, info) {
-			if info.IsDir() {
-				return filepath.SkipDir
+		if shouldSkipEmbedded(path, d) {
+			if d.IsDir() {
+				return fs.SkipDir
 			}
 			return nil
 		}
 
-		relPath, err := filepath.Rel(src, path)
+		// Get relative path from gin/
+		relPath, err := filepath.Rel("gin", path)
 		if err != nil {
 			return err
 		}
 
 		dstPath := filepath.Join(dst, relPath)
 
-		if info.IsDir() {
-			return os.MkdirAll(dstPath, info.Mode())
+		if d.IsDir() {
+			return os.MkdirAll(dstPath, 0755)
 		}
 
-		return copyFile(path, dstPath)
+		return copyEmbeddedFile(path, dstPath)
 	})
 }
 
-func shouldSkip(path string, info os.FileInfo) bool {
-	// Skip hidden files and directories
-	if strings.HasPrefix(info.Name(), ".") {
-		return true
-	}
-
-	// Skip build artifacts
-	if info.Name() == "tmp" || info.Name() == "logs" {
-		return true
-	}
-
-	// Skip specific files
-	skipFiles := []string{
-		"go.sum",
-		".env",
-		"README.md", // We'll generate our own
-	}
-
-	for _, skip := range skipFiles {
-		if info.Name() == skip {
-			return true
-		}
-	}
-
-	return false
-}
-
-func copyFile(src, dst string) error {
-	srcFile, err := os.Open(src)
+func copyEmbeddedFile(src, dst string) error {
+	srcFile, err := templateFS.Open(src)
 	if err != nil {
 		return err
 	}
@@ -218,6 +196,52 @@ func copyFile(src, dst string) error {
 
 	_, err = io.Copy(dstFile, srcFile)
 	return err
+}
+
+func shouldSkipEmbedded(path string, d fs.DirEntry) bool {
+	name := d.Name()
+	
+	// Skip hidden files and directories
+	if strings.HasPrefix(name, ".") {
+		return true
+	}
+	
+	// Skip common directories that shouldn't be copied
+	skipDirs := []string{
+		"node_modules",
+		"vendor",
+		"tmp",
+		"logs",
+		"bin",
+		"dist",
+		"build",
+	}
+	
+	if d.IsDir() {
+		for _, skipDir := range skipDirs {
+			if name == skipDir {
+				return true
+			}
+		}
+	}
+	
+	// Skip certain file types
+	skipExtensions := []string{
+		".log",
+		".tmp",
+		".cache",
+		".pid",
+		".lock",
+		".DS_Store",
+	}
+	
+	for _, ext := range skipExtensions {
+		if strings.HasSuffix(name, ext) {
+			return true
+		}
+	}
+	
+	return false
 }
 
 func generateTemplatedFiles(projectPath string, config ProjectConfig) error {
