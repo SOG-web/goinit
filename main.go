@@ -12,10 +12,10 @@ import (
 	"strings"
 )
 
-//go:embed gin
+//go:embed all:gin
 var templateFS embed.FS
 
-const version = "v0.2.5"
+const version = "v0.2.6"
 
 type ProjectConfig struct {
 	ProjectName    string
@@ -231,16 +231,27 @@ func shouldSkipEmbedded(path string, d fs.DirEntry) bool {
 		}
 	}
 	
-	// Skip certain file types
+	// Skip certain file types (but allow hidden config files like .gitignore, .env.example)
+	skipFiles := []string{
+		".DS_Store",
+	}
+	
 	skipExtensions := []string{
 		".log",
 		".tmp",
 		".cache",
 		".pid",
 		".lock",
-		".DS_Store",
 	}
 	
+	// Skip specific files by name
+	for _, skipFile := range skipFiles {
+		if name == skipFile {
+			return true
+		}
+	}
+	
+	// Skip files that end with specific extensions
 	for _, ext := range skipExtensions {
 		if strings.HasSuffix(name, ext) {
 			return true
