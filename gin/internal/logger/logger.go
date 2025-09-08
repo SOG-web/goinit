@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/SOG-web/gin/config"
+	"github.com/SOG-web/goinit/gin/config"
 	"github.com/lmittmann/tint"
 	"gopkg.in/natefinch/lumberjack.v2"
 )

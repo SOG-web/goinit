@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/SOG-web/gin/api/common/dto"
+	"github.com/SOG-web/goinit/gin/api/common/dto"
 	"github.com/gin-gonic/gin"
 )
 

@@ -20,17 +20,17 @@ package api
 import (
 	"log/slog"
 
-	"github.com/SOG-web/gin/api/common/middleware"
-	"github.com/SOG-web/gin/api/protocol/http/router"
-	"github.com/SOG-web/gin/config"
-	docs "github.com/SOG-web/gin/docs"
-	userGorm "github.com/SOG-web/gin/internal/data/user/model/gorm"
-	"github.com/SOG-web/gin/internal/db"
-	"github.com/SOG-web/gin/internal/di"
-	jwtLib "github.com/SOG-web/gin/internal/lib/jwt"
-	pwresetGorm "github.com/SOG-web/gin/internal/lib/pwreset"
-	"github.com/SOG-web/gin/internal/logger"
-	"github.com/SOG-web/gin/internal/server"
+	"github.com/SOG-web/goinit/gin/api/common/middleware"
+	"github.com/SOG-web/goinit/gin/api/protocol/http/router"
+	"github.com/SOG-web/goinit/gin/config"
+	docs "github.com/SOG-web/goinit/gin/docs"
+	userGorm "github.com/SOG-web/goinit/gin/internal/data/user/model/gorm"
+	"github.com/SOG-web/goinit/gin/internal/db"
+	"github.com/SOG-web/goinit/gin/internal/di"
+	jwtLib "github.com/SOG-web/goinit/gin/internal/lib/jwt"
+	pwresetGorm "github.com/SOG-web/goinit/gin/internal/lib/pwreset"
+	"github.com/SOG-web/goinit/gin/internal/logger"
+	"github.com/SOG-web/goinit/gin/internal/server"
 	"gorm.io/gorm"
 )
 

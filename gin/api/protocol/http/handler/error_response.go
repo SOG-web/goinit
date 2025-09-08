@@ -3,7 +3,7 @@ package handler
 import (
 	"net/http"
 
-	"github.com/SOG-web/gin/internal/apperr"
+	"github.com/SOG-web/goinit/gin/internal/apperr"
 	"github.com/gin-gonic/gin"
 )
 

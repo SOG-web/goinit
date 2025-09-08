@@ -1,6 +1,6 @@
 package repo
 
-import "github.com/SOG-web/gin/internal/domain/user/model"
+import "github.com/SOG-web/goinit/gin/internal/domain/user/model"
 
 type UserRepository interface {
 	// Basic CRUD operations

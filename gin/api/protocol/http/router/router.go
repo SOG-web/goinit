@@ -1,10 +1,10 @@
 package router
 
 import (
-	"github.com/SOG-web/gin/api/protocol/http/handler"
-	"github.com/SOG-web/gin/api/protocol/http/routes"
-	"github.com/SOG-web/gin/internal/di"
-	jwtLib "github.com/SOG-web/gin/internal/lib/jwt"
+	"github.com/SOG-web/goinit/gin/api/protocol/http/handler"
+	"github.com/SOG-web/goinit/gin/api/protocol/http/routes"
+	"github.com/SOG-web/goinit/gin/internal/di"
+	jwtLib "github.com/SOG-web/goinit/gin/internal/lib/jwt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/redis/go-redis/v9"

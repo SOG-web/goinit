@@ -3,7 +3,7 @@ package middleware
 import (
 	"net/http"
 
-	"github.com/SOG-web/gin/config"
+	"github.com/SOG-web/goinit/gin/config"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"

@@ -1,8 +1,8 @@
 package routes
 
 import (
-	sseHandler "github.com/SOG-web/gin/api/protocol/sse"
-	wsHandler "github.com/SOG-web/gin/api/protocol/ws"
+	sseHandler "github.com/SOG-web/goinit/gin/api/protocol/sse"
+	wsHandler "github.com/SOG-web/goinit/gin/api/protocol/ws"
 	"github.com/gin-gonic/gin"
 )
 

@@ -83,7 +83,7 @@ GoInit can be installed and used in several ways depending on your needs.
 
 ```bash
 # Clone the repository
-git clone https://github.com/SOG-web/goinit.git
+git clone https://github.com/SOG-web/goinit/goinit.git
 cd goinit
 
 # Run the installation script
@@ -96,7 +96,7 @@ goinit-generator --version
 
 #### From Pre-built Binaries
 
-1. **Go to [Releases](https://github.com/SOG-web/goinit/releases)**
+1. **Go to [Releases](https://github.com/SOG-web/goinit/goinit/releases)**
 2. **Download the appropriate binary** for your platform:
 
    - `goinit-linux-amd64` (Linux)
@@ -125,7 +125,7 @@ goinit-generator --version
 
 ```bash
 # Clone the repository
-git clone https://github.com/SOG-web/goinit.git
+git clone https://github.com/SOG-web/goinit/goinit.git
 cd goinit/gin
 
 # Install Go dependencies
@@ -142,7 +142,7 @@ nano .env  # or your preferred editor
 
 ```bash
 # Clone repository
-git clone https://github.com/SOG-web/goinit.git
+git clone https://github.com/SOG-web/goinit/goinit.git
 cd goinit/gin
 
 # Start with Docker Compose
@@ -157,10 +157,10 @@ docker run -p 8080:8080 --env-file .env goinit-api
 
 ```bash
 # Install CLI generator directly
-go install github.com/SOG-web/goinit/cli-generator@latest
+go install github.com/SOG-web/goinit/goinit/cli-generator@latest
 
 # Use the template
-git clone https://github.com/SOG-web/goinit.git
+git clone https://github.com/SOG-web/goinit/goinit.git
 cd goinit/gin
 go mod tidy
 ```
@@ -544,7 +544,7 @@ This project is licensed under the MIT License.
 
 ---
 
-**Repository**: [https://github.com/SOG-web/goinit](https://github.com/SOG-web/goinit)  
+**Repository**: [https://github.com/SOG-web/goinit/goinit](https://github.com/SOG-web/goinit/goinit)  
 **Happy coding! 🎉**
 
 For questions or issues, please open a GitHub issue.

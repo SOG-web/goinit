@@ -5,11 +5,11 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/SOG-web/gin/api/common/dto"
-	userService "github.com/SOG-web/gin/internal/app/user"
-	"github.com/SOG-web/gin/internal/di"
-	userModel "github.com/SOG-web/gin/internal/domain/user/model"
-	"github.com/SOG-web/gin/internal/lib/storage"
+	"github.com/SOG-web/goinit/gin/api/common/dto"
+	userService "github.com/SOG-web/goinit/gin/internal/app/user"
+	"github.com/SOG-web/goinit/gin/internal/di"
+	userModel "github.com/SOG-web/goinit/gin/internal/domain/user/model"
+	"github.com/SOG-web/goinit/gin/internal/lib/storage"
 )
 
 type UserHandler struct {

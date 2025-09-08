@@ -8,11 +8,11 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/SOG-web/gin/api/common/dto"
-	userService "github.com/SOG-web/gin/internal/app/user"
-	"github.com/SOG-web/gin/internal/di"
-	"github.com/SOG-web/gin/internal/lib/email"
-	"github.com/SOG-web/gin/internal/lib/pwreset"
+	"github.com/SOG-web/goinit/gin/api/common/dto"
+	userService "github.com/SOG-web/goinit/gin/internal/app/user"
+	"github.com/SOG-web/goinit/gin/internal/di"
+	"github.com/SOG-web/goinit/gin/internal/lib/email"
+	"github.com/SOG-web/goinit/gin/internal/lib/pwreset"
 )
 
 // PasswordResetHandler manages password reset request and confirmation endpoints.

@@ -3,9 +3,9 @@ package repo
 import (
 	"time"
 
-	userGORM "github.com/SOG-web/gin/internal/data/user/model/gorm"
-	userModel "github.com/SOG-web/gin/internal/domain/user/model"
-	"github.com/SOG-web/gin/internal/domain/user/repo"
+	userGORM "github.com/SOG-web/goinit/gin/internal/data/user/model/gorm"
+	userModel "github.com/SOG-web/goinit/gin/internal/domain/user/model"
+	"github.com/SOG-web/goinit/gin/internal/domain/user/repo"
 	"gorm.io/gorm"
 )
 

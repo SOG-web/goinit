@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/SOG-web/gin/api/common/dto"
-	"github.com/SOG-web/gin/internal/lib/jwt"
+	"github.com/SOG-web/goinit/gin/api/common/dto"
+	"github.com/SOG-web/goinit/gin/internal/lib/jwt"
 	"github.com/gin-gonic/gin"
 )
 

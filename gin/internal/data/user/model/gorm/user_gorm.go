@@ -3,9 +3,9 @@ package gorm
 import (
 	"time"
 
-	"github.com/SOG-web/gin/internal/domain/model"
-	userModel "github.com/SOG-web/gin/internal/domain/user/model"
-	"github.com/SOG-web/gin/internal/lib/id"
+	"github.com/SOG-web/goinit/gin/internal/domain/model"
+	userModel "github.com/SOG-web/goinit/gin/internal/domain/user/model"
+	"github.com/SOG-web/goinit/gin/internal/lib/id"
 	"gorm.io/gorm"
 )
 

@@ -3,9 +3,9 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 
-	"github.com/SOG-web/gin/api/common/middleware"
-	"github.com/SOG-web/gin/api/protocol/http/handler"
-	"github.com/SOG-web/gin/internal/lib/jwt"
+	"github.com/SOG-web/goinit/gin/api/common/middleware"
+	"github.com/SOG-web/goinit/gin/api/protocol/http/handler"
+	"github.com/SOG-web/goinit/gin/internal/lib/jwt"
 )
 
 // SetupAuthRoutes sets up all authentication routes (Django's authentication/api/urls.py equivalent)
