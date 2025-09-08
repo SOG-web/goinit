@@ -15,7 +15,7 @@ import (
 //go:embed gin
 var templateFS embed.FS
 
-const version = "v0.2.3"
+const version = "v0.2.4"
 
 type ProjectConfig struct {
 	ProjectName    string
@@ -288,7 +288,7 @@ SESSION_MAX_AGE=86400
 
 # JWT Configuration
 JWT_SECRET=dev-jwt-secret-change-me-in-production
-USE_DATABASE_JWT=false
+USE_DATABASE_JWT=true # This will store JWT tokens in the database for revocation support
 
 # Email Configuration
 EMAIL_HOST=smtp.gmail.com
@@ -299,13 +299,13 @@ EMAIL_FROM=noreply@%s.com
 USE_LOCAL_EMAIL=true
 EMAIL_LOG_PATH=./logs/emails.log
 
-# Redis Configuration
+# Redis Configuration - Will not be used if USE_DATABASE_PWRESET is true
 REDIS_ADDR=localhost:6379
 REDIS_PASSWORD=
 REDIS_DB=0
 
-# Password Reset Configuration
-USE_DATABASE_PWRESET=false
+# Password Reset Configuration - This will make the server use the database to store password reset tokens instead of redis
+USE_DATABASE_PWRESET=true
 
 # Storage Configuration
 STORAGE_BACKEND=local
