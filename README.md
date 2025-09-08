@@ -1,46 +1,40 @@
-# Go Gin API Starter Template & Generator
+# GoInit - Go Gin API Starter Template & Generator
 
-A comprehensive Go API starter template built with Gin framework, featuring authentication, user management, real-time communication, and a CLI tool to generate new projects.
+A comprehensive Go API starter template built with Gin framework, featuring authentication, user management, real-time communication, and a CLI tool to generate new projects from the template.
 
 ## 🎯 What's Included
 
 ### ✅ Core Features
 
 - **Authentication & Authorization**
-
   - JWT-based authentication with refresh tokens
   - Session management with cookies
   - Password reset functionality
   - Role-based access control (admin/user)
 
 - **User Management**
-
   - User registration and login
   - Profile management
   - User roles and permissions
   - Admin user controls
 
 - **Real-time Communication**
-
   - Server-Sent Events (SSE) for notifications
   - WebSocket support for bidirectional communication
   - Real-time event streaming
 
 - **Database Support**
-
   - SQLite (default, file-based)
   - MySQL
   - PostgreSQL
   - GORM ORM with auto-migration
 
 - **Email Integration**
-
   - SMTP email sending
   - Local email logging for development
   - HTML email templates
 
 - **Storage Solutions**
-
   - Local file storage
   - S3-compatible storage (AWS S3, MinIO, etc.)
 
@@ -49,6 +43,12 @@ A comprehensive Go API starter template built with Gin framework, featuring auth
   - Auto-generated API docs
   - Interactive API testing
 
+- **Project Generator CLI**
+  - Interactive project setup
+  - Customizable configuration
+  - Automated dependency management
+  - Cross-platform builds
+
 ### 🏗️ Architecture
 
 - **Clean Architecture** with separation of concerns
@@ -56,62 +56,116 @@ A comprehensive Go API starter template built with Gin framework, featuring auth
 - **Repository Pattern** for data access
 - **Service Layer** for business logic
 - **Middleware** for cross-cutting concerns
+- **Automated Git Hooks** for template synchronization
 
 ## 🚀 Quick Start
 
 ### Option 1: Use the Template Directly
 
-1. **Clone and setup:**
+1. **Clone the repository:**
 
    ```bash
-   git clone <repository-url>
-   cd go-gin-api-template/gin
+   git clone https://github.com/SOG-web/goinit.git
+   cd goinit
    ```
 
-2. **Install dependencies:**
+2. **Navigate to the template:**
+
+   ```bash
+   cd gin
+   ```
+
+3. **Install dependencies:**
 
    ```bash
    go mod tidy
    ```
 
-3. **Configure environment:**
+4. **Configure environment:**
 
    ```bash
    cp .env.example .env
    # Edit .env with your settings
    ```
 
-4. **Run the server:**
+5. **Run the server:**
    ```bash
    go run cmd/api/main.go
    ```
 
-### Option 2: Generate New Project with CLI
+### Option 2: Generate New Project with CLI (Recommended)
 
-1. **Install the generator:**
+1. **Clone the repository:**
 
    ```bash
+   git clone https://github.com/SOG-web/goinit.git
+   cd goinit
+   ```
+
+2. **Install the generator:**
+
+   ```bash
+   chmod +x install.sh
    ./install.sh
    ```
 
-2. **Generate new project:**
+3. **Generate new project:**
 
    ```bash
    goinit-generator
    ```
 
-3. **Follow the prompts** to configure your project
+4. **Follow the interactive prompts** to configure your project
 
-4. **Start developing:**
+5. **Start developing:**
    ```bash
    cd your-project-name
    go mod tidy
    go run cmd/api/main.go
    ```
 
+### Option 3: Download Pre-built Binary
+
+1. **Go to [Releases](https://github.com/SOG-web/goinit/releases)**
+2. **Download the appropriate binary** for your platform
+3. **Make it executable and run:**
+
+   ```bash
+   chmod +x goinit-*
+   ./goinit-* --help
+   ```
+
 ## 📁 Project Structure
 
+### Repository Structure
+
+This repository contains both the template and the CLI generator:
+
 ```
+goinit/
+├── gin/                     # 🏗️  API Template Source
+│   ├── cmd/api/            # Application entry point
+│   ├── config/             # Configuration management
+│   ├── internal/           # Internal application code
+│   ├── api/                # HTTP handlers and routes
+│   ├── docs/               # API documentation
+│   └── docker/             # Docker configuration
+├── cli-generator/          # 🛠️  CLI Tool Source
+│   ├── main.go            # CLI entry point
+│   ├── .git/hooks/        # Git hooks for template sync
+│   └── gin/               # Copied template for CLI use
+├── .github/workflows/      # 🚀 GitHub Actions CI/CD
+├── go.mod                 # Go module for CLI generator
+├── install.sh             # Installation script
+└── README.md              # This file
+```
+
+### Generated Project Structure
+
+When you use the CLI generator, it creates a new project with this structure:
+
+```
+your-project/
 ├── cmd/api/                 # Application entry point
 ├── config/                  # Configuration management
 ├── internal/
@@ -136,7 +190,9 @@ A comprehensive Go API starter template built with Gin framework, featuring auth
 │       ├── sse/            # Server-Sent Events
 │       └── ws/             # WebSocket handlers
 ├── docs/                   # API documentation
-└── cli-generator/          # Project generator CLI
+├── docker/                 # Docker configuration
+├── .env.example           # Environment template
+└── go.mod                 # Go module file
 ```
 
 ## 🔧 Configuration
@@ -261,17 +317,53 @@ go test -cover ./...
 go test -run TestUserService ./internal/app/user/
 ```
 
-## 🐳 Docker Support
+## � GitHub Actions & Releases
+
+This project includes automated CI/CD pipelines:
+
+### Automated Releases
+
+- **Trigger**: Push a version tag (e.g., `v1.0.0`)
+- **Builds**: Cross-platform binaries for Linux, macOS (Intel/Apple Silicon), and Windows
+- **Artifacts**: Automatically uploaded to GitHub Releases
+- **Workflow**: `.github/workflows/release.yml`
+
+### Creating a Release
+
+```bash
+# Create and push a version tag
+git tag v1.0.0
+git push origin v1.0.0
+
+# GitHub Actions will automatically:
+# 1. Build binaries for all platforms
+# 2. Create release archives
+# 3. Upload to GitHub Releases
+```
+
+### Development Workflow
+
+- **Pre-commit hooks**: Automatically sync template files
+- **Pre-push hooks**: Ensure template consistency before pushing
+- **Automated testing**: Run tests on all platforms
+- **Code quality**: Automated linting and formatting
+
+## � Docker Support
 
 ### Development
 
 ```bash
+# From the template directory
+cd gin
 docker-compose up --build
 ```
 
 ### Production
 
 ```bash
+# From the template directory
+cd gin
+
 # Build production image
 docker build -f Dockerfile -t my-gin-api .
 
@@ -279,9 +371,9 @@ docker build -f Dockerfile -t my-gin-api .
 docker run -p 8080:8080 --env-file .env my-gin-api
 ```
 
-## 📚 API Documentation
+## �📚 API Documentation
 
-When running, visit: http://localhost:8080/docs/
+When running the generated project, visit: http://localhost:8080/docs/
 
 The documentation is auto-generated from code comments using Swagger.
 
@@ -296,18 +388,15 @@ The documentation is auto-generated from code comments using Swagger.
 5. **Add routes** in `api/protocol/http/routes/`
 6. **Register dependencies** in `internal/di/container.go`
 
-### Code Generation
+### Git Hooks
 
-```bash
-# Generate Swagger docs
-swag init -g cmd/api/main.go
+This project includes automated Git hooks for template synchronization:
 
-# Format code
-go fmt ./...
+- **Pre-commit**: Automatically copies updated template files before commits
+- **Pre-push**: Ensures template consistency before pushing changes
+- **Location**: `.git/hooks/` (automatically installed)
 
-# Vet code
-go vet ./...
-```
+The hooks ensure that the CLI generator always uses the latest template files.
 
 ## 🤝 Contributing
 
@@ -324,13 +413,18 @@ This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 
-- [Gin Web Framework](https://gin-gonic.com/)
-- [GORM](https://gorm.io/)
-- [JWT](https://github.com/golang-jwt/jwt)
-- [Swagger](https://swagger.io/)
+- [Gin Web Framework](https://gin-gonic.com/) - HTTP web framework
+- [GORM](https://gorm.io/) - ORM library
+- [JWT](https://github.com/golang-jwt/jwt) - JSON Web Tokens
+- [Swagger](https://swagger.io/) - API documentation
+- [Cobra](https://github.com/spf13/cobra) - CLI framework
+- [Viper](https://github.com/spf13/viper) - Configuration management
+- [Gorilla WebSocket](https://github.com/gorilla/websocket) - WebSocket implementation
+- [GoMail](https://github.com/go-gomail/gomail) - Email sending
 
 ---
 
+**Repository**: [https://github.com/SOG-web/goinit](https://github.com/SOG-web/goinit)  
 **Happy coding! 🎉**
 
 For questions or issues, please open a GitHub issue.
