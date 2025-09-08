@@ -1,6 +1,8 @@
 # GoInit - Go Gin API Starter Template & Generator
 
-A comprehensive Go API starter template built with Gin framework, featuring authentication, user management, real-time communication, and a CLI tool to generate new projects from the template.
+A comprehensive Go API starter template built with Gin framework, featuring authentication, user management, real-time communication, and a CLI tool to generate n## 🚀 Quick Start
+
+Once installed, here's how to get started quickly:projects from the template.
 
 ## 🎯 What's Included
 
@@ -58,82 +60,192 @@ A comprehensive Go API starter template built with Gin framework, featuring auth
 - **Middleware** for cross-cutting concerns
 - **Automated Git Hooks** for template synchronization
 
-## 🚀 Quick Start
+## � Installation
 
-### Option 1: Use the Template Directly
+GoInit can be installed and used in several ways depending on your needs.
 
-1. **Clone the repository:**
+### Prerequisites
 
-   ```bash
-   git clone https://github.com/SOG-web/goinit.git
-   cd goinit
-   ```
+- **Go 1.21+** - [Download here](https://golang.org/dl/)
+- **Git** - For cloning the repository
+- **Optional**: Docker for containerized development
 
-2. **Navigate to the template:**
+### Method 1: Install CLI Generator (Recommended)
 
-   ```bash
-   cd gin
-   ```
+#### From Source
 
-3. **Install dependencies:**
+```bash
+# Clone the repository
+git clone https://github.com/SOG-web/goinit.git
+cd goinit
 
-   ```bash
-   go mod tidy
-   ```
+# Run the installation script
+chmod +x install.sh
+./install.sh
 
-4. **Configure environment:**
+# Verify installation
+goinit-generator --version
+```
 
-   ```bash
-   cp .env.example .env
-   # Edit .env with your settings
-   ```
-
-5. **Run the server:**
-   ```bash
-   go run cmd/api/main.go
-   ```
-
-### Option 2: Generate New Project with CLI (Recommended)
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/SOG-web/goinit.git
-   cd goinit
-   ```
-
-2. **Install the generator:**
-
-   ```bash
-   chmod +x install.sh
-   ./install.sh
-   ```
-
-3. **Generate new project:**
-
-   ```bash
-   goinit-generator
-   ```
-
-4. **Follow the interactive prompts** to configure your project
-
-5. **Start developing:**
-   ```bash
-   cd your-project-name
-   go mod tidy
-   go run cmd/api/main.go
-   ```
-
-### Option 3: Download Pre-built Binary
+#### From Pre-built Binaries
 
 1. **Go to [Releases](https://github.com/SOG-web/goinit/releases)**
-2. **Download the appropriate binary** for your platform
-3. **Make it executable and run:**
+2. **Download the appropriate binary** for your platform:
+   - `goinit-linux-amd64` (Linux)
+   - `goinit-darwin-amd64` (macOS Intel)
+   - `goinit-darwin-arm64` (macOS Apple Silicon)
+   - `goinit-windows-amd64.exe` (Windows)
+
+3. **Make executable and install:**
 
    ```bash
+   # Linux/macOS
    chmod +x goinit-*
-   ./goinit-* --help
+   sudo mv goinit-* /usr/local/bin/goinit-generator
+
+   # Windows: Move to a directory in your PATH
    ```
+
+4. **Verify installation:**
+   ```bash
+   goinit-generator --version
+   ```
+
+### Method 2: Use Template Directly
+
+#### Clone and Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/SOG-web/goinit.git
+cd goinit/gin
+
+# Install Go dependencies
+go mod tidy
+
+# Copy environment configuration
+cp .env.example .env
+
+# Edit configuration (optional)
+nano .env  # or your preferred editor
+```
+
+#### Docker Installation
+
+```bash
+# Clone repository
+git clone https://github.com/SOG-web/goinit.git
+cd goinit/gin
+
+# Start with Docker Compose
+docker-compose up --build
+
+# Or build manually
+docker build -t goinit-api .
+docker run -p 8080:8080 --env-file .env goinit-api
+```
+
+### Method 3: Go Install (Development)
+
+```bash
+# Install CLI generator directly
+go install github.com/SOG-web/goinit/cli-generator@latest
+
+# Use the template
+git clone https://github.com/SOG-web/goinit.git
+cd goinit/gin
+go mod tidy
+```
+
+### Verification
+
+After installation, verify everything works:
+
+```bash
+# Check CLI generator
+goinit-generator --help
+
+# Test template (if using directly)
+cd gin
+go run cmd/api/main.go
+# Should start server on http://localhost:8080
+```
+
+### Post-Installation Setup
+
+#### Environment Configuration
+
+Edit `.env` file with your settings:
+
+```env
+# Server
+PORT=8080
+PUBLIC_HOST=http://localhost:8080
+
+# Database
+DB_DRIVER=sqlite
+DB_NAME=myapp.db
+
+# Authentication
+JWT_SECRET=your-super-secret-jwt-key-here
+SESSION_SECRET=your-session-secret-here
+
+# Email (optional)
+USE_LOCAL_EMAIL=true  # For development
+```
+
+#### Database Setup
+
+For production databases:
+
+```bash
+# SQLite (default - no setup needed)
+# Files are created automatically
+
+# MySQL
+mysql -u root -p
+CREATE DATABASE myapp;
+GRANT ALL PRIVILEGES ON myapp.* TO 'user'@'localhost' IDENTIFIED BY 'password';
+
+# PostgreSQL
+psql -U postgres
+CREATE DATABASE myapp;
+CREATE USER myuser WITH PASSWORD 'password';
+GRANT ALL PRIVILEGES ON DATABASE myapp TO myuser;
+```
+
+## �🚀 Quick Start
+
+### Generate New Project (Fastest)
+
+```bash
+# Generate a new project
+goinit-generator
+
+# Follow the interactive prompts
+# Your project will be ready in minutes!
+```
+
+### Use Template Directly
+
+```bash
+# Navigate to template
+cd gin
+
+# Quick start with default settings
+go run cmd/api/main.go
+
+# Visit http://localhost:8080/docs for API documentation
+```
+
+### Docker Quick Start
+
+```bash
+cd gin
+docker-compose up --build
+```
+
+> 💡 **Tip**: See the [Installation](#-installation) section above for detailed setup instructions.
 
 ## 📁 Project Structure
 
