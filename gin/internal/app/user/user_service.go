@@ -8,12 +8,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/SOG-web/gin/internal/domain/model"
+	userModel "github.com/SOG-web/gin/internal/domain/user/model"
+	"github.com/SOG-web/gin/internal/domain/user/repo"
+	"github.com/SOG-web/gin/internal/lib/email"
+	"github.com/SOG-web/gin/internal/lib/id"
 	"golang.org/x/crypto/bcrypt"
-	"sog.com/goinit/gin/internal/domain/model"
-	userModel "sog.com/goinit/gin/internal/domain/user/model"
-	"sog.com/goinit/gin/internal/domain/user/repo"
-	"sog.com/goinit/gin/internal/lib/email"
-	"sog.com/goinit/gin/internal/lib/id"
 )
 
 type UserService struct {

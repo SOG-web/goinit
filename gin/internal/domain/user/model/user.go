@@ -3,7 +3,7 @@ package model
 import (
 	"time"
 
-	"sog.com/goinit/gin/internal/domain/model"
+	"github.com/SOG-web/gin/internal/domain/model"
 )
 
 type User struct {

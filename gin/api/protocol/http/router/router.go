@@ -1,15 +1,15 @@
 package router
 
 import (
+	"github.com/SOG-web/gin/api/protocol/http/handler"
+	"github.com/SOG-web/gin/api/protocol/http/routes"
+	"github.com/SOG-web/gin/internal/di"
+	jwtLib "github.com/SOG-web/gin/internal/lib/jwt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/redis/go-redis/v9"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"sog.com/goinit/gin/api/protocol/http/handler"
-	"sog.com/goinit/gin/api/protocol/http/routes"
-	"sog.com/goinit/gin/internal/di"
-	jwtLib "sog.com/goinit/gin/internal/lib/jwt"
 )
 
 type Dependencies struct {

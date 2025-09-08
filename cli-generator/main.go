@@ -499,7 +499,7 @@ func replaceModuleReferences(projectPath string, config ProjectConfig) error {
 	// Replace module references in each Go file
 	replacements := 0
 	for _, filePath := range goFiles {
-		if replaced, err := replaceInFile(filePath, "sog.com/goinit", config.ModuleName); err != nil {
+		if replaced, err := replaceInFile(filePath, "github.com/SOG-web/gin", config.ModuleName); err != nil {
 			return fmt.Errorf("failed to replace in file %s: %v", filePath, err)
 		} else if replaced {
 			replacements++

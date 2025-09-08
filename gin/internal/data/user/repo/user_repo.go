@@ -3,10 +3,10 @@ package repo
 import (
 	"time"
 
+	userGORM "github.com/SOG-web/gin/internal/data/user/model/gorm"
+	userModel "github.com/SOG-web/gin/internal/domain/user/model"
+	"github.com/SOG-web/gin/internal/domain/user/repo"
 	"gorm.io/gorm"
-	userGORM "sog.com/goinit/gin/internal/data/user/model/gorm"
-	userModel "sog.com/goinit/gin/internal/domain/user/model"
-	"sog.com/goinit/gin/internal/domain/user/repo"
 )
 
 // UserRepositoryGORM implements UserRepository using GORM

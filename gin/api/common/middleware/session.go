@@ -3,10 +3,10 @@ package middleware
 import (
 	"net/http"
 
+	"github.com/SOG-web/gin/config"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
-	"sog.com/goinit/gin/config"
 )
 
 // NewSessionMiddleware creates and returns a session middleware

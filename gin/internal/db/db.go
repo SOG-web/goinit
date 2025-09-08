@@ -6,7 +6,7 @@ import (
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 
-	"sog.com/goinit/gin/config"
+	"github.com/SOG-web/gin/config"
 )
 
 func NewSqliteDb(cfg config.Config) (*gorm.DB, error) {

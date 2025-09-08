@@ -20,18 +20,18 @@ package api
 import (
 	"log/slog"
 
+	"github.com/SOG-web/gin/api/common/middleware"
+	"github.com/SOG-web/gin/api/protocol/http/router"
+	"github.com/SOG-web/gin/config"
+	docs "github.com/SOG-web/gin/docs"
+	userGorm "github.com/SOG-web/gin/internal/data/user/model/gorm"
+	"github.com/SOG-web/gin/internal/db"
+	"github.com/SOG-web/gin/internal/di"
+	jwtLib "github.com/SOG-web/gin/internal/lib/jwt"
+	pwresetGorm "github.com/SOG-web/gin/internal/lib/pwreset"
+	"github.com/SOG-web/gin/internal/logger"
+	"github.com/SOG-web/gin/internal/server"
 	"gorm.io/gorm"
-	"sog.com/goinit/gin/api/common/middleware"
-	"sog.com/goinit/gin/api/protocol/http/router"
-	"sog.com/goinit/gin/config"
-	docs "sog.com/goinit/gin/docs"
-	userGorm "sog.com/goinit/gin/internal/data/user/model/gorm"
-	"sog.com/goinit/gin/internal/db"
-	"sog.com/goinit/gin/internal/di"
-	jwtLib "sog.com/goinit/gin/internal/lib/jwt"
-	pwresetGorm "sog.com/goinit/gin/internal/lib/pwreset"
-	"sog.com/goinit/gin/internal/logger"
-	"sog.com/goinit/gin/internal/server"
 )
 
 

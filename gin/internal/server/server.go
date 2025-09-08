@@ -5,8 +5,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"sog.com/goinit/gin/api/protocol/http/router"
-	"sog.com/goinit/gin/config"
+	"github.com/SOG-web/gin/api/protocol/http/router"
+	"github.com/SOG-web/gin/config"
 )
 
 type Server struct {

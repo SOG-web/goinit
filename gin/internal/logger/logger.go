@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/SOG-web/gin/config"
 	"github.com/lmittmann/tint"
 	"gopkg.in/natefinch/lumberjack.v2"
-	"sog.com/goinit/gin/config"
 )
 
 // New creates a slog.Logger that logs to both terminal (human-readable) and file (JSON) with rotation.

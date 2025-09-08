@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/SOG-web/gin/api/common/dto"
 	"github.com/gin-gonic/gin"
-	"sog.com/goinit/gin/api/common/dto"
 )
 
 // UploadProfileImage handles authenticated profile image upload

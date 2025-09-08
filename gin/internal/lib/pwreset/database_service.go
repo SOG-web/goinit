@@ -5,8 +5,8 @@ import (
 	"errors"
 	"time"
 
+	"github.com/SOG-web/gin/internal/domain/model"
 	"gorm.io/gorm"
-	"sog.com/goinit/gin/internal/domain/model"
 )
 
 // PasswordResetToken represents a password reset token in the database

@@ -5,8 +5,8 @@ import (
 	"encoding/hex"
 	"time"
 
+	"github.com/SOG-web/gin/internal/domain/model"
 	"gorm.io/gorm"
-	"sog.com/goinit/gin/internal/domain/model"
 )
 
 // BlacklistedToken represents a blacklisted token in the database

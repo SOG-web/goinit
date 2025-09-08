@@ -5,16 +5,16 @@ import (
 	"log/slog"
 	"time"
 
+	"github.com/SOG-web/gin/config"
+	"github.com/SOG-web/gin/internal/app/user"
+	dataRepo "github.com/SOG-web/gin/internal/data/user/repo"
+	"github.com/SOG-web/gin/internal/domain/user/repo"
+	"github.com/SOG-web/gin/internal/lib/email"
+	jwtLib "github.com/SOG-web/gin/internal/lib/jwt"
+	"github.com/SOG-web/gin/internal/lib/pwreset"
+	"github.com/SOG-web/gin/internal/lib/storage"
 	"github.com/redis/go-redis/v9"
 	"gorm.io/gorm"
-	"sog.com/goinit/gin/config"
-	"sog.com/goinit/gin/internal/app/user"
-	dataRepo "sog.com/goinit/gin/internal/data/user/repo"
-	"sog.com/goinit/gin/internal/domain/user/repo"
-	"sog.com/goinit/gin/internal/lib/email"
-	jwtLib "sog.com/goinit/gin/internal/lib/jwt"
-	"sog.com/goinit/gin/internal/lib/pwreset"
-	"sog.com/goinit/gin/internal/lib/storage"
 )
 
 // DIContainer is the global DI container singleton.

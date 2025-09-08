@@ -100,7 +100,7 @@ GoInit includes intelligent module management features:
 # User specifies: github.com/mycompany/myapi
 # GoInit will:
 # 1. Run: go mod init github.com/mycompany/myapi
-# 2. Replace any "sog.com/goinit" references with "github.com/mycompany/myapi"
+# 2. Replace any "github.com/SOG-web" references with "github.com/mycompany/myapi"
 # 3. Run: go mod tidy (downloads all dependencies)
 # 4. Generate a fully functional project ready to run
 ```
@@ -180,5 +180,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Happy coding! 🎉**
+
 # Test change for hook
+
 # Test commit

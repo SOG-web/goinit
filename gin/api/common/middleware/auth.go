@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/SOG-web/gin/api/common/dto"
+	"github.com/SOG-web/gin/internal/lib/jwt"
 	"github.com/gin-gonic/gin"
-	"sog.com/goinit/gin/api/common/dto"
-	"sog.com/goinit/gin/internal/lib/jwt"
 )
 
 // RequireAuth ensures a user is signed in using JWT token

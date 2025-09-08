@@ -3,8 +3,8 @@ package handler
 import (
 	"net/http"
 
+	"github.com/SOG-web/gin/internal/apperr"
 	"github.com/gin-gonic/gin"
-	"sog.com/goinit/gin/internal/apperr"
 )
 
 type errorBody struct {

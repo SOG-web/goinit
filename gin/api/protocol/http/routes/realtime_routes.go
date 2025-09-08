@@ -1,9 +1,9 @@
 package routes
 
 import (
+	sseHandler "github.com/SOG-web/gin/api/protocol/sse"
+	wsHandler "github.com/SOG-web/gin/api/protocol/ws"
 	"github.com/gin-gonic/gin"
-	sseHandler "sog.com/goinit/gin/api/protocol/sse"
-	wsHandler "sog.com/goinit/gin/api/protocol/ws"
 )
 
 // SetupSSERoutes sets up Server-Sent Events routes

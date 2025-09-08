@@ -5,11 +5,11 @@ import (
 	"os"
 	"time"
 
+	"github.com/SOG-web/gin/internal/domain/model"
+	userModel "github.com/SOG-web/gin/internal/domain/user/model"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/redis/go-redis/v9"
 	"gorm.io/gorm"
-	"sog.com/goinit/gin/internal/domain/model"
-	userModel "sog.com/goinit/gin/internal/domain/user/model"
 )
 
 type JWTService struct {

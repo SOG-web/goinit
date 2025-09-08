@@ -5,10 +5,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"sog.com/goinit/gin/api/common/dto"
-	userService "sog.com/goinit/gin/internal/app/user"
-	"sog.com/goinit/gin/internal/di"
-	userModel "sog.com/goinit/gin/internal/domain/user/model"
+	"github.com/SOG-web/gin/api/common/dto"
+	userService "github.com/SOG-web/gin/internal/app/user"
+	"github.com/SOG-web/gin/internal/di"
+	userModel "github.com/SOG-web/gin/internal/domain/user/model"
 )
 
 type AdminHandler struct {
